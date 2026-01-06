@@ -1,7 +1,7 @@
 USE [LibraryDB]
 GO
 
-/****** Object:  Table [dbo].[Loan]    Script Date: 1/6/2026 7:52:34 PM ******/
+/****** Object:  Table [dbo].[Loan]    Script Date: 1/6/2026 9:44:08 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,14 +10,18 @@ GO
 
 CREATE TABLE [dbo].[Loan](
 	[LoanId] [int] IDENTITY(100,1) NOT NULL,
-	[FkLibraryMemberId] [int] NULL,
-	[FkBookId] [int] NULL,
-	[LoanDateTime] [datetime] NULL,
+	[FkLibraryMemberId] [int] NOT NULL,
+	[FkBookId] [int] NOT NULL,
+	[LoanDateTime] [datetime] NOT NULL,
+	[LoanPeriod] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[LoanId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Loan] ADD  CONSTRAINT [DF_Loan_LoanPeriod]  DEFAULT ((14)) FOR [LoanPeriod]
 GO
 
 ALTER TABLE [dbo].[Loan]  WITH CHECK ADD  CONSTRAINT [Fk_BookLoan] FOREIGN KEY([FkBookId])
