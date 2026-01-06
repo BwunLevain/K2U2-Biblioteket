@@ -1,7 +1,7 @@
 USE [LibraryDB]
 GO
 
-/****** Object:  Table [dbo].[Book]    Script Date: 1/6/2026 9:42:39 PM ******/
+/****** Object:  Table [dbo].[Book]    Script Date: 1/6/2026 10:32:14 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,9 +9,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Book](
-	[BookId] [int] IDENTITY(10,1) NOT NULL,
+	[BookId] [int] IDENTITY(100,1) NOT NULL,
 	[ISBN] [bigint] NOT NULL,
-	[Author] [nvarchar](50) NOT NULL,
 	[BookTitle] [nvarchar](60) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -23,5 +22,3 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
-
