@@ -1,7 +1,7 @@
 USE [LibraryDB]
 GO
 
-/****** Object:  Table [dbo].[LibraryMember]    Script Date: 1/6/2026 7:52:03 PM ******/
+/****** Object:  Table [dbo].[LibraryMember]    Script Date: 1/6/2026 9:43:36 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,9 +10,9 @@ GO
 
 CREATE TABLE [dbo].[LibraryMember](
 	[LibraryMemberId] [int] IDENTITY(1,1) NOT NULL,
-	[PersonalNumber] [int] NULL,
-	[PINCode] [int] NULL,
-	[Email] [nvarchar](50) NULL,
+	[PersonalNumber] [int] NOT NULL,
+	[PINCode] [int] NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[LibraryMemberId] ASC
