@@ -1,7 +1,7 @@
 USE [LibraryDB]
 GO
 
-/****** Object:  Table [dbo].[Book]    Script Date: 1/6/2026 7:50:05 PM ******/
+/****** Object:  Table [dbo].[Book]    Script Date: 1/6/2026 9:42:39 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,9 +10,9 @@ GO
 
 CREATE TABLE [dbo].[Book](
 	[BookId] [int] IDENTITY(10,1) NOT NULL,
-	[ISBN] [bigint] NULL,
-	[Author] [nvarchar](50) NULL,
-	[BookTitle] [nvarchar](60) NULL,
+	[ISBN] [bigint] NOT NULL,
+	[Author] [nvarchar](50) NOT NULL,
+	[BookTitle] [nvarchar](60) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[BookId] ASC
@@ -23,3 +23,5 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+
