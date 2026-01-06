@@ -1,7 +1,7 @@
 USE [LibraryDB]
 GO
 
-/****** Object:  Table [dbo].[Discharge]    Script Date: 1/6/2026 7:51:23 PM ******/
+/****** Object:  Table [dbo].[Discharge]    Script Date: 1/6/2026 9:43:15 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,13 +10,13 @@ GO
 
 CREATE TABLE [dbo].[Discharge](
 	[DischargeId] [int] IDENTITY(1000,1) NOT NULL,
-	[FkLoanId] [int] NULL,
-	[DischargeDateTime] [datetime] NULL,
+	[FkLoanId] [int] NOT NULL,
+	[DischargeDateTime] [datetime] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[DischargeId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
+ CONSTRAINT [UC_Discharge_LoanId] UNIQUE NONCLUSTERED 
 (
 	[FkLoanId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
