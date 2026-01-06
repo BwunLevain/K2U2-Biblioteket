@@ -23,6 +23,7 @@ INSERT INTO Book (ISBN, Author, BookTitle) VALUES
 (9780679720201, 'Franz Kafka', 'The Metamorphosis');
 
 --Insert Loans
+--Insert Standard Loans
 INSERT INTO Loan (FkLibraryMemberId, FkBookId, LoanDateTime, LoanPeriod) VALUES 
 (1, 10, '2023-10-01 10:30:00', 14), 
 (2, 11, '2023-10-05 14:15:00', 14), 
@@ -33,25 +34,25 @@ INSERT INTO Loan (FkLibraryMemberId, FkBookId, LoanDateTime, LoanPeriod) VALUES
 (6, 17, '2023-12-01 15:45:00', 14), 
 (1, 18, '2023-12-05 09:20:00', 14);
 
---Late Loans
+--Insert Late Loans
 INSERT INTO Loan (FkLibraryMemberId, FkBookId, LoanDateTime, LoanPeriod) VALUES 
 (
     (SELECT LibraryMemberId FROM LibraryMember WHERE Email = 'forgotful.borrower@example.com'),
     (SELECT BookId FROM Book WHERE ISBN = 9780140449266), 
-    DATEADD(day, -45, GETDATE()),
-    30 
+    DATEADD(day, -45, GETDATE()), -- This creates a loan from 45 days ago
+    30                            -- LoanPeriod is 30 days
 ),
 (
     (SELECT LibraryMemberId FROM LibraryMember WHERE Email = 'forgotful.borrower@example.com'),
     (SELECT BookId FROM Book WHERE ISBN = 9780679720201), 
-    DATEADD(day, -21, GETDATE()),
-    7
+    DATEADD(day, -21, GETDATE()), -- This creates a loan from 21 days ago
+    7                             -- LoanPeriod is 7 days (This will be very overdue!)
 ),
 (
     (SELECT LibraryMemberId FROM LibraryMember WHERE Email = 'forgotful.borrower@example.com'),
     (SELECT BookId FROM Book WHERE ISBN = 9780553103540), 
-    DATEADD(day, -20, GETDATE()),
-    14
+    DATEADD(day, -20, GETDATE()), -- This creates a loan from 20 days ago
+    14                            -- LoanPeriod is 14 days
 );
 
 --Insert Discharges
